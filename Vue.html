@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+
+        <h1 class="error">
+            {{score}} 分
+        </h1>
+        
+        <p>請輸入1~10分</p>
+        <input type="text" v-model="score">
+        
+        <div v-show="score">
+            <!-- <p v-if="score>10"><script>alert('no this point')</script></p> -->
+            <p v-if="score>=6">Vue.js so easy</p>
+            <p v-else>still learning Vue.js </p>
+        </div>
+        <input type="submit" value="立即送出" v-on:click="clickme">
+        <!-- <div>{{ $data | json }}</div> -->
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+    <script>
+        let data = {
+            score: '1'
+        }
+        new Vue({
+            el: '#app',
+            methods:{
+                clickme: function(){
+                    alert('here');
+                }
+            },
+            data: data
+        });
+    </script>
+</body>
+
+</html>
