@@ -13,34 +13,51 @@
 
     <div id="app">
 
+
         <h1 class="error">
             {{score}} 分
         </h1>
-        
+
         <p>請輸入1~10分</p>
         <input type="text" v-model="score">
-        
+
         <div v-show="score">
             <!-- <p v-if="score>10"><script>alert('no this point')</script></p> -->
             <p v-if="score>=6">Vue.js so easy</p>
             <p v-else>still learning Vue.js </p>
         </div>
+        <p>目前已點了: {{count}} 次</p>
         <input type="submit" value="立即送出" v-on:click="clickme">
-        <!-- <div>{{ $data | json }}</div> -->
+
+        <button v-on:click="shout('uh')">uh uh uh</button>
+        <button v-on:click="shout('ah')">ah ah ah</button>
+
+        <h3>
+            {{product}}
+        </h3>
+        <div>{{ $data | json }}</div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
     <script>
         let data = {
-            score: '1'
+            score: '1',
+            count: 0,
+            product: 'boots'
         }
-        new Vue({
+        let app = new Vue({
             el: '#app',
-            methods:{
-                clickme: function(){
-                    alert('here');
+            methods: {
+                clickme: function () {
+                    // alert('here');
+                    this.count += 1;
+                },
+                shout: function (msg) {
+                    console.log(msg)
                 }
             },
+            // app.product doesn't work in console
+            // cause doesn't make it save in a variable
             data: data
         });
     </script>
